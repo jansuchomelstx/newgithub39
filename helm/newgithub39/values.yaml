@@ -1,0 +1,38 @@
+configHash: "1" # configuration change detection
+codenow:
+  instance: ""
+  applicationName: ""
+  applicationRuntimeName: ""
+  applicationVersion: ""
+  componentRuntimeName: "newgithub39"
+  componentName: "newgithub39"
+  componentVersion: ${project.version}
+  templateId: ""
+  domainName: "omi-dev.stxcn.codenow.com"
+  environmentId: ""
+
+buildNumber: "${env.BUILD_NUMBER}"
+
+service:
+  externalEndpointEnabled: true
+
+nginx:
+  fullnameOverride: newgithub39
+  service:
+    ## Service type
+    ##
+    type: NodePort
+    ## HTTP Port
+    ##
+    port: 80
+    ## HTTPS Port
+    ##
+    httpsPort: 443
+  serverBlock: |-
+    server {
+      listen 0.0.0.0:8080;
+      root /opt/bitnami/nginx/html;
+      location / {
+        add_header X-Frame-Options "";
+      }
+    }

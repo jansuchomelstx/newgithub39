@@ -1,0 +1,7 @@
+apiVersion: v2
+name: newgithub39
+version: ${project.version}
+dependencies:
+- name: nginx
+  version: "13.2.10"
+  repository: "https://charts.bitnami.com/bitnami"
